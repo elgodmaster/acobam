@@ -1,0 +1,18 @@
+archivos es la carpeta donde se llaman los archivos que se utilizan para modificar
+los formularios tambien se encuentas los archivos como ejemplo tafiras, motoristas
+que son los archivos que llaman cuando el usuario en el sistema desea verlas.
+
+
+el css solo es la carpeta de diseño si deseamos modificar el diseño colores y demas 
+ahi lo hace
+
+
+formularios se encuentran los archivos de ingreso y tambien los menus
+
+fpdf es una libreria con la que se construyen los pdf de los reportes 
+esa no se toca solo se modifica el archivo del reporte que se quiera cambiar
+que se encuentran en formularios
+
+
+js es la carpeta donde estan las validaciones del sistema
+
