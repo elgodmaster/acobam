@@ -1,0 +1,224 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Con este definimos valores generales para todas las etiquetas */
+*{
+	font-family: Comic Sans MS, Arial;	
+}
+
+/******* ETIKETAS *********/
+body{ margin: 0px; }
+
+
+
+/* Este es para definirle alineacion a las etiquetas h1 */
+h1{ text-align: center;}
+
+/* Esta clase sirve para definir color y decoracion del texto de los enlaces */
+a.menu{
+	color: white;
+	text-decoration: none;
+		}
+
+/* Esta clase sirve para definir color y decoracion del texto de los enlaces 
+	Cuando se pasa el mouse sobre el enlace */
+a.menu:hover{
+	color: black;
+	background-color:#666666;
+	}
+	
+/******** IDS *********/
+/* En este se definien propiedades del div donde esta el contenido del sitio */
+#contenedor{
+		width: 1000px;
+		height: auto;
+		margin-left: auto;
+		margin-right: auto;
+		color:#0FF;
+}
+
+/* Aqui se definen las propiedades del div correspondiente al banner o encabezado */
+#contenedor #banner{
+	width: 100%;
+	height: 100px;	
+}
+
+/* Aqui se definen las propiedades del menu de navegacion */
+#contenedor #menu{
+	width: 100%;
+	height: 25px;
+	background-repeat: repeat;
+	color: white;
+	text-indent: 10px;
+}
+
+/* Este id es donde se van a cargar los iframes de los formularios */
+#contenedor #caja{
+	width: 100%;
+	height: auto;
+}
+
+/* Este id es el pie de pagina */
+#abajo{
+	width: 65%;
+	height: auto;
+	background-color: black;
+	color: white;	
+	margin-top: 160px;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+/* Este id sirve para darle formato a los cuadros donde van los campos de los formularios */
+/*#formulario{
+	width: 800px;
+	height: auto;
+	background-color: #DA3A3A;
+	padding: 12px;
+	margin: auto;
+	color: white;
+}
+*/
+/* Aqui se definen las propiedades del menu flotante */
+#floatMenu{
+	position: absolute;
+	top: 150px;
+	background-image: url('../imagenes/menu.png');
+	padding: 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	behavior:url(border-radius.htc);	
+}
+
+/* Este es para los cuadros en donde se muestran las opciones
+	de cada filial */
+#menuacobam{
+	margin-top: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 65%;
+	background-color:#003366;
+	color: white;
+	}
+
+#menuacobam td{
+	text-align: center;
+	color: white;
+}
+
+/************** CLASES ****************/
+/* Esta clase sirve para redondear los bordes de los div donde se dibujan los campos de los formularios */
+.curved{
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	behavior:url(border-radius.htc);
+	padding: 12px;
+}
+
+.curvita{
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+        color: white;
+	behavior:url(border-radius.htc);
+		  background-color: #5187ba;
+		  background-image: -webkit-gradient(linear, left top, left bottom, from(#C03), to(#600)); /* Saf4+, Chrome */
+		  background-image: -webkit-linear-gradient(top, #C03, #600); /* Chrome 10+, Saf5.1+ */
+		  background-image:    -moz-linear-gradient(top, #C03, #600); /* FF3.6 */
+		  background-image:     -ms-linear-gradient(top, #C03, #600); /* IE10 */
+		  background-image:      -o-linear-gradient(top, #C03, #600); /* Opera 11.10+ */
+		  background-image:         linear-gradient(top, #C03, #600);
+		  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#5187ba', EndColorStr='#0d406f'); /* IE6–IE9 */
+		 /* filter:alpha(opacity=80);
+		-moz-opacity:.80;
+		opacity:.80;*/
+	}
+.login{ 
+-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	behavior:url(border-radius.htc);
+		  background-color:transparent;
+		  background-image: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#000)); /* Saf4+, Chrome */
+		  background-image: -webkit-linear-gradient(top, #C00, #000); /* Chrome 10+, Saf5.1+ */
+		  background-image:    -moz-linear-gradient(top, #C00, #000); /* FF3.6 */
+		  background-image:     -ms-linear-gradient(top, #C00, #000); /* IE10 */
+		  background-image:      -o-linear-gradient(top, #C00, #000); /* Opera 11.10+ */
+		  background-image:         linear-gradient(top, #C00, #000);
+		  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#3366FF', EndColorStr='#0000FF'); /* IE6–IE9 */
+		  filter:alpha(opacity=75);
+		-moz-opacity:.75;
+		opacity:.75;
+		color:white;
+		border:solid;
+		position:relative;
+		margin:auto;
+		width:250px; 
+		height:270px;
+}
+
+.loginn{
+	margin-top: 180px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 25%;
+	background-color:#003366;
+	color: white;
+	
+	}
+
+.loginn td{
+	text-align: center;
+	color:white;
+}
+.paramarcos{
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	background-color:#003366;
+	color: white;
+	}
+
+.paramarcos td{
+	text-align: center;
+	color:white;
+}
+
+.accordion{
+    width: 80%;
+    margin: auto;
+    font-size: 14px;
+}
+
+.label{
+	font-size:13px;
+	font-family:"Comic Sans MS", arial;
+	text-align:left;
+	width:40%;
+	
+	}
+.control{
+	font-size:13px;
+	font-family:"Comic Sans MS", arial;
+	text-align:left;
+	width:60%;
+	
+	}
+	
+.form{font-size:13px;
+	font-family:"Comic Sans MS", arial;
+	
+	width:100%;
+	
+	}
+	
+.con{font-family: Arial;font-size:12pt;color:#0033FF;text-align:center;background-color:#0033F;font-weight: bold;}
+.con1{font-family: Arial;font-size:11pt;color:#0033F;text-align:left;background-color:#0033F;font-weight: normal;}
+#fondo{background-color:#0033F);}
+input:focus {
+border: 2px solid #0033F;
+background:#0033F;
+}
