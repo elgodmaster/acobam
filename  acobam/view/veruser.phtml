@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> Ver Horarios</title>
+<script language="javascript" type=""text/javascript" src="<?php echo Conectar::ruta();?>public/js/funciones.js></script>
+</head>
+
+<body>
+<?php include ("menu.phtml");?>
+<hr>
+<h2>Ver Horarios</h2>
+<?php
+if(isset($_GET["m"]))
+{
+	switch ($_GET["m"])
+{
+	case '1';
+	?>
+    <h3 style="color:red;">Eliminación de usuario erronea</hr3>
+    <?php
+	break;
+	case '2';
+	?>
+    <h3 style="color:green;">Se elimino usuario exitosamente</hr3>
+    <?php
+	break;
+	}
+	
+}
+?>
+<table align="center">
+<tr style="font-weight: bold;">
+<td valign="top">Id Horario</td>
+<td valign="top">Fecha_Hora_Salida</td>
+<td valign="top">Fecha_Hora_Regreso</td>
+<td valign="top">Editar</td>
+<td valign="top">Eliminar</td>
+</tr>
+<?php
+for($i=0;$i<sizeof($datos);$i++)
+{
+	?>
+    <tr>
+<td valign="top"><?php echo $datos[$i]["Id horario"];?></td>
+<td valign="top"><?php echo $datos[$i]["Fecha_Hora_Salida"];?></td>
+<td valign="top"><?php echo $datos[$i]["Fecha_Hora_Regreso"];?></td>
+<td valign="top"><a href="<?php echo Conectar::ruta();?>accion=edituser&v"<?php echo $datos[$i]["Id_Usuario"];?>" title_ "Editar datos de Usuario <?php echo $datos[$i][""];?></td></td>">Ediatr</a></td>
+<td valign="top"><a href="#" title_ "Eliminar datos de Usuario <?php echo $datos[$i]["id_horario"];?>"onclick -+ Eliminar ("<?php echo Conectar::ruta();?>accion=deletuser&v"<?php echo $datos[$i]["Id_Usuario"];?>");">Eliminar</a></td>
+</tr>
+<?php
+}
+?>
+</table>
+</body>
+</html>
