@@ -1,0 +1,63 @@
+<?php
+ require_once("lib/config.php");
+ ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ACOBAM</title>
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="css/estilo.css">
+<link href="themes/css/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body background="imagenes/Imagen fondo aurora celeste.png">
+<div id="contenedor"> <!-- dentro de contenedor va el contenido de la pagina -->
+	<div id="banner"> <!-- encabezado de la pagina web -->
+ <img src="imagenes/Captura.PNG" alt="Menu" width="1000" height="100"  align="top"  /> 
+	</div>
+    
+    
+
+	
+     <div id='cssmenu'>
+<ul>
+   <li><a href='<?php echo Conectar :: ruta();?>?accion=index'><span>Inicio</span></a></li>
+   <li class='has-sub '><a href='#'><span>Unidad</span></a>
+      <ul>
+         <li class='has-sub '><a href='<?php echo Conectar :: ruta();?>?accion=addunidad'><span>Agregar Unidad</span></a></li>
+         <li class='has-sub '><a href='<?php echo Conectar :: ruta();?>?accion=verunidad'><span>Ver Unidad</span></a>
+            <ul>
+            </ul>
+         </li>
+      </ul>
+   </li>
+   <li class='has-sub '><a href='#'><span>Motoristas</span></a></li>
+   <li class='has-sub '><a href='#'><span>Destinos</span></a>
+ <ul>
+         <li class='has-sub '><a href='#'><span>Departamentos</span></a>
+<ul>
+   <li class='has-sub '><a href='#'><span>Agregar Departamento</span></a></li>
+         <li class='has-sub '><a href='#'><span>Ver Departamento</span></a></li>
+</ul>
+         </li>
+         <li class='has-sub '><a href='#'><span>Municipios</span></a>
+              <ul>
+                 <li class='has-sub '><a href='<?php echo Conectar :: ruta();?>?accion=addmunicipio'><span>Agregar Municipios</span></a></li>
+                 <li class='has-sub '><a href='<?php echo Conectar :: ruta();?>?accion=vermunicipio'><span>Ver Municipios</span></a></li>
+              </ul>
+        </li>
+         <li class='has-sub '><a href='#'><span>Tarifas</span></a></li>
+         <li class='has-sub '><a href='#'><span>Horarios</span></a></li>
+            </ul>
+   </li>
+   <li><a href='#'><span>Clientes</span></a></li>
+   <li><a href='#'><span>Reservaciones</span></a></li>
+   <li><a href='#'><span>Cerrar Sesi&oacute;n</span></a></li>
+</ul>
+</div>
+      
+          
+</div>
+</body>
+</html>
