@@ -1,3 +1,3 @@
 <?php
-require_once("index2.html");
+require_once("view/index2.phtml");
 ?>
