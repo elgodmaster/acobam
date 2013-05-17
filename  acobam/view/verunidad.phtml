@@ -34,7 +34,8 @@ if(isset($_REQUEST["m"])){
 
 }
 ?>
-		<h2>Ver Unidades</h2>
+		<h1>Ver Unidades</h1>
+        <div class="accordion" style="width: 53%;margin: auto;font-size: 13px;">
 		<table>
            <tr>
            	<td>Placa</td>
@@ -55,12 +56,13 @@ if(isset($_REQUEST["m"])){
            	<td><?php echo $datos[$i]["id_tipo_unidad"];?></td>
            	<td><?php echo $datos[$i]["matricula"];?></td>
            	<td><?php echo $datos[$i]["tarjeta_circulacion"];?></td>
-           	<td><a href="#" title="Eliminar unidades" onClick="eliminar('<?php echo Conectar :: ruta();?>?accion=deleteun&i=<?php echo $datos[$i]["id_unidad_vehiculo"];?>')">Modificar</td>
-           	<td><a href="<?php echo Conectar :: ruta();?>?accion=deletun&i=<?php echo $datos[$i]["id_unidad_vehiculo"];?>"> Eliminar</td>
+           	<td><a href="#" title="Eliminar unidades" onClick="eliminar('<?php echo Conectar :: ruta();?>?accion=deleteunidad&i=<?php echo $datos[$i]["id_unidad"];?>')">Modificar</td>
+           	<td><a href="<?php echo Conectar :: ruta();?>?accion=updateunidad&i=<?php echo $datos[$i]["id_unidad"];?>'"> Eliminar</td>
            </tr>
 
             <?php  }
            ?>
 		</table>
+  </div>
 	</body>
 	</html>
