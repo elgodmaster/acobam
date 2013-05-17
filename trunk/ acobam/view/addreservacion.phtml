@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Control de Servicio</title>
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="themes/css/estilo.css">
+<link rel="stylesheet" type="text/css" href="themes/css/blitzer/jquery-ui-1.8.16.custom.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="themes/js/calendario/calendar-green.css" title="win2k-cold-1" />
+
+<style>
+	 table.form{width: 100%}		
+    td.label{text-align: left;width: 40%}
+    td.control{text-align: left;width: 60%}   
+</style>
+<!-- JAVASCRIPT -->
+<script src="themes/js/validaciones.js"></script>
+<script src="themes/js/jquery-1.6.2.min.js"></script>
+<script src="themes/js/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="themes/js/jquery.form.js"></script>
+<script src="../../../taxis3/js/validaciones.js"></script>
+<script type="text/javascript">
+<!--
+num=0;
+function crear(obj) {
+  num++;
+  fi = document.getElementById('fiel'); // 1
+  contenedor = document.createElement('div'); // 2
+  contenedor.id = 'div'+num; // 3
+  fi.appendChild(contenedor); // 4
+
+  ele = document.createElement('input'); // 5
+  ele.type = 'text'; // 6
+  ele.name = 'nom'+num; // 6
+  contenedor.appendChild(ele); // 7
+  
+    ele = document.createElement('input'); // 5
+  ele.type = 'text'; // 6
+  ele.name = 'ape'+num; // 6
+  contenedor.appendChild(ele);
+
+    ele = document.createElement('input'); // 5
+  ele.type = 'text'; // 6
+  ele.name = 'fec'+num; // 6
+  ele.size = '10';
+  contenedor.appendChild(ele);
+  
+  ele = document.createElement('input'); // 5
+  ele.setAttribute('m','jajajajaa');
+  ele.type = 'radio'; // 6
+  ele.name = 'sx'+num; // 6
+  ele.value = 'm'+num;
+  contenedor.appendChild(ele);
+  
+
+ele = document.createElement("label");  
+ele2 = document.createTextNode("Masculino");  
+ele.appendChild(ele2);  
+contenedor.appendChild(ele);  
+
+  ele = document.createElement('input'); // 5
+  ele.type = 'radio'; // 6
+  ele.name = 'sx'+num; // 6
+  ele.value = 'f'+num;
+  contenedor.appendChild(ele);
+
+ele = document.createElement("label");  
+ele2 = document.createTextNode("Femenino");  
+ele.appendChild(ele2);  
+contenedor.appendChild(ele);
+
+  ele = document.createElement('input'); // 5
+  ele.type = 'button'; // 6
+  ele.value = '-'; // 8
+  ele.name = 'div'+num; // 8
+  ele.onclick = function () {borrar(this.name)} // 9
+  contenedor.appendChild(ele); // 7
+}
+function borrar(obj) {
+  fi = document.getElementById('fiel'); // 1 
+  fi.removeChild(document.getElementById(obj)); // 10
+}
+--> 
+</script>
+<script type="text/javascript">
+var salida;
+$(function()
+{
+    $('.date-pick').datepicker({
+    	maxDate: "+0D",
+      changeMonth: true,
+      changeYear: true,
+      showOn: "button",
+		buttonImage: "../imagenes/calendar.gif",
+		buttonImageOnly: true
+    });
+    $(".accordion").accordion({
+    		autoHeight: false,
+			navigation: true	
+    });
+    $('#turno').submit(function(){
+        $(this).ajaxSubmit({
+            target: salida
+        });
+        
+        return false;
+    });
+});
+</script>
+</head>
+<body background="themes/imagenes/Imagen fondo aurora celeste.png">
+    <div id="estado" style="text-align: center">
+        
+    </div>
+<!-- Comienza el formulario -->
+<form id="turno" name="turno" method="POST">
+    <input type="hidden" name="accion" />
+    <h1>RESERVACIONES</h1>
+    <div class="accordion" style="width: 80%;margin: auto;font-size: 13px;">
+        <h3><a href="#">Encabezado</a></h3>
+        <div>
+            ACOBAM de R.L
+            
+        </div>
+        <h3><a href="#">DATOS PERSONALES</a></h3>
+        <div>
+            <table class="form">
+            <tr>
+                <td class="label"><label>Nombres:</label> </td>
+                <td class="control"><input name="nombre" type="text" size="25" maxlength="35" /> &nbsp; </td>
+            </tr>
+            </table>
+            <div id="horas">
+            <table class="form">
+            <tr>
+                <td class="label"><label>Apellidos:</label> </td>
+                <td class="control"><input name="apellido" type="text"
+                                                                                            title="Apellidos" size="25" maxlength="35" /></td>
+            </tr>
+           
+            </table>
+            </div>
+            <table class="form">
+            
+            <tr>
+                    <td colspan="2" style="text-align: center"><input type="submit" class="curvita" value="A&ntilde;adir"
+                                                                      onclick="document.turno.accion.value='anadir_vol';                                     salida='#voluntarios'
+  document.turno.depto.disabled=false 
+ document.turno.municipio.disabled=false
+  document.turno.precio.disabled=false"/> &nbsp; &nbsp; 
+                             <input type="button" class="curvita" value="Limpiar" />				
+            </table>
+            
+        </div>
+        <h3><a href="#">PASO 1 : ESCOJER DESTINOS</a></h3>
+	<div>
+	<!--    <input type="hidden" name="id_vol" />-->
+	    <fieldset>
+	        <legend>Destinos</legend>
+	       <?php
+ 
+
+ 
+//conexion a la base de datos
+$db_server = 'localhost';
+$db_user = 'root';
+
+$db="acobam";
+$tabla="Destinos";
+ 
+//conectamos con la base de datos
+ 
+$con=mysql_connect($db_server,$db_user);
+mysql_select_db($db,$con);
+ 
+//establecemos condiciones de paginacion
+ 
+if (!isset($pg))
+$pg = 0;
+$cantidad = 10; //aca modificas la cantidad :P
+$inicial = $pg * $cantidad;
+ 
+//realizamos la busqueda en la base de datos
+$pegar = "SELECT * FROM $tabla  LIMIT $inicial,$cantidad";
+$cad = mysql_query($pegar) or die (mysql_error());
+ 
+//calculamos las paginas a mostrar
+ 
+$contar = "SELECT * FROM $tabla";
+$contarok = mysql_query($contar);
+$total_records = mysql_num_rows($contarok);
+$pages = intval($total_records / $cantidad);
+ 
+//imprimiendo los resultados
+echo "
+";
+echo " <table><tr><td><span ><b></b></span></td>
+<td><span ><b>Destino</b></span></td>
+      <td><span ><b>Precio</b></span></td>
+      <td><span ><b>Transporte</b></span></td>
+      <td><span ><b>Fecha Salida</b></span></td>
+      <td><span ><b>Fecha Entrada</b></span></td>
+       
+";
+       
+while ($array = mysql_fetch_array($cad))
+{
+echo "<tr>
+    <td><input type='radio' name='dst' value='$array[id_destino]'></td>
+    <td><font>$array[Destino]  </font></td>
+    <td><font><b>$ $array[Precio]</b>  </font></td>
+    <td><font><b>$array[Unidad]</b>  </font></td>
+    <td><font><b>".$array["Fecha Salida"]."</b>  </font></td>
+    <td><font><b>".$array["Fecha Regreso"]."</b> </font></td> </tr>
+ 
+     
+";
+} //fin imprimir resultados
+echo "</table>
+";
+ 
+ 
+//creando los enlaces de paginacion de resultados
+ 
+echo "<center><p>";
+if ($pg <>0)
+{
+$url = $pg - 1;
+echo "<font><a href='pagi.php?id=".$id."&pg=".$url."'>? Anterior</a>?</font>";
+}
+else {
+echo " ";
+}
+for ($i = 0; $i<($pages + 1); $i++) {
+if ($i == $pg) {
+echo "<font><b>0 de 0</b></font>";
+}
+else {
+echo "<font><a href='pagi.php?id=".$id."&pg=".$i."'>".$i."</a>?</font>";
+}
+}
+if ($pg < $pages) {
+$url = $pg + 1;
+echo "<font><a href='pagi.php?id=".$id."&pg=".$url."'>Siguiente ?</a></font>";
+}
+else {
+echo " ";
+}
+echo "</p></center>";
+?>
+	     </fieldset>
+	</div>
+        <h3><a href="#">PASO II: INGRESAR ACOMPA&ntilde;ANTES</a></h3>
+      <div>
+        <fieldset id="fiel">
+                 <legend>Acompa&ntilde;antes</legend>
+        <input type="button" value="AGREGAR " onclick="crear(this)" />
+        </fieldset>
+   
+        <table class="form">
+            
+          <tr>
+                    <td colspan="2" style="text-align: center"><input type="submit" class="curvita" value="A&ntilde;adir"
+                                                                      onclick="document.turno.accion.value='anadir_acom';                                     salida='#acom'
+  "/> &nbsp; &nbsp; 
+                             <input type="button" class="curvita" value="Limpiar" />				
+        </table>
+        <br/><br/>
+            
+      </div>  
+        
+        <h3><a href="#">Guardar o Salir</a></h3>
+        <div>
+            <table class="form">
+            <tr>
+                    <td class="label"><label>Observaciones:</label> 
+                    <td class="control"><textarea name="observaciones" rows="3" cols="50"></textarea>
+            </table>
+            <div style="text-align: center">	
+            <input type="submit" class="curvita" value="Guardar" onClick="document.turno.accion.value='guardar';
+                                                                          salida='#estado'" />
+            <input type="button" class="curvita" value="Salir" onClick="location.href='plantillaC.php'" />
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
