@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" src="../css/estilo.css">
+<link rel="stylesheet" type="text/css" src="../css/blitzer/jquery-ui-1.8.16.custom.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="../js/calendario/calendar-green.css" title="win2k-cold-1" />
+
+<style>
+   table.form{width: 100%}    
+    td.label{text-align: left;width: 40%}
+    td.control{text-align: left;width: 60%}   
+</style>
+	<title>Ver Unidades</title>
+	<script type="text/javascript" src="<?php echo Conectar :: ruta();?>themes/js/funciones.js"></script>
+	</head>
+<body>
+
+<?php
+if(isset($_REQUEST["m"])){
+  switch ($_REQUEST["m"]) {
+    case 3:
+    
+      echo "<h3>Se inteto eliminar unidad, pero ocurrio un error</h3>";
+      
+      break;
+    
+    case 2:
+     echo " <h3>Se elimino unidad correctamente</h3>";
+      break;
+  }
+  
+
+}
+?>
+		<h1>Municipios</h1>
+        <div class="accordion" style="width: 53%;margin: auto;font-size: 13px;">
+		<table>
+           <tr>
+           	<td>Nombre</td>
+           	<td colspan="2">Acciones</td>
+           </tr>
+           <?php
+             for($i=0;$i< sizeof ($datos);$i++)
+             {
+             	?>
+  <tr>
+           	<td><?php echo $datos[$i]["nombre"];?></td>
+           	<td><a href="<?php echo Conectar :: ruta();?>?accion=updatedepto&i=<?php echo $datos[$i]["id_depto"];?>'">Modificar</td>
+            <td><a href="#" title="Eliminar Departamentos" onClick="eliminar('<?php echo Conectar :: ruta();?>?accion=deletedep&i=<?php echo $datos[$i]["id_depto"];?>')">Eliminar</td>
+           	
+           </tr>
+
+            <?php  }
+           ?>
+		</table>
+  </div>
+	</body>
+	</html>
