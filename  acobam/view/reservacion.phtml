@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Control de Servicio</title>
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="../css/estilo.css">
+<script type="text/javascript">function mod_res(ruta)
+{
+if(confirm("Desea cancelarr esta Reservacion?")){
+
+window.location=ruta; 
+}
+}</script>
+
+<style>
+	 table.form{width: 100%}		
+    td.label{text-align: left;width: 40%}
+    td.control{text-align: left;width: 60%}   
+</style>
+
+</head>
+<body background="../themes/imagenes/Imagen fondo aurora celeste.png">
+    <div id="estado" style="text-align: center">
+        
+    </div>
+<!-- Comienza el formulario -->
+
+<form id="turno" name="turno" method="POST">
+    <h1>RESERVACIONES</h1> 
+    <?php if(isset($_POST["m"])){ 
+
+    echo "<br><h3>Su Reservacion se ha realizado exitosamente</h3>";
+    }  ?> 
+
+    <div class="accordion" style="width: 80%;margin: auto;font-size: 13px;">
+        <fieldset>
+           <leyend>DATOS DE USUARIO</leyend>
+           <table>
+            <tr>
+              <td>Nombre : </td>
+              <td><?php echo $datos[0]["Nombres"]." ".$datos[0]["Apellidos"];?></td>
+            </tr>
+             <tr>
+              <td>Direccion: </td>
+              <td><?php echo $datos[0]["direccion"];?></td>
+            </tr>
+           </table>
+        </fieldset>
+        <br>
+        <fieldset>
+           <leyend>INFORMACION  DE RESERVACION</leyend>
+           <table>
+             <tr>
+              <td>Estado : </td>
+              <td><?php echo $datos2[1]["nombre"];?></td>
+            </tr>
+            <tr>
+              <td>Destino : </td>
+              <td><?php echo $datos2[1]["Destino"];?></td>
+            </tr>
+             <tr>
+              <td>Fecha/Hora de Salida: </td>
+              <td><?php echo $datos2[1]["f_salida"];?></td>
+            </tr>
+             <tr>
+              <td>Fecha/Hora de Regreso: </td>
+              <td><?php echo $datos2[1]["f_regreso"];?></td>
+            </tr>
+             <tr>
+              <td>Fecha/Hora de Reserva: </td>
+              <td><?php echo $datos2[1]["fecha_hora_reserva"];?></td>
+            </tr>
+           </table>
+        </fieldset>
+        <br>
+         <fieldset>
+           <leyend>ACOMPAÑANTES</leyend>
+           <table>
+            <tr>
+              <td>Nombre  </td>
+              <td>Edad</td>
+            </tr>
+            <?php
+             for($i=2;$i< sizeof ($datos3);$i++)
+             {
+              ?>
+             <tr>
+              <td><?php echo $datos3[$i]["nombre"]." ".$datos3[$i]["apellido"];?></td>
+              <td><?php echo $datos3[$i]["edad"];
+//
+              //
+
+              ?></td>
+            </tr>
+            <?php } ?>
+           </table>
+        </fieldset>
+         <br>
+        <fieldset>
+           <leyend>PAGO</leyend>
+           <table>
+            <tr>
+              <td>Costo Unitario de Destino : </td>
+              <td><?php echo $datos2[1]["costo"];?></td>
+              <td></td>
+            </tr>
+             <tr>
+              <td>IVA (13%): </td>
+              <td><?php echo $datos2[1]["costo"]*0.13;?></td>
+              <td>   +</td>
+            </tr>
+             <tr>
+              <td>Nº de Reservaciones: </td>
+              <td><?php echo $datos2[1]["num_personas"];?></td>
+              <td>   x</td>
+            </tr>
+            <tr><td colspan="3"><hr></td></tr>
+             <tr>
+              <td>Total </td>
+              <td><?php echo ($datos2[1]["costo"]+$datos2[1]["costo"]*0.13)*$datos2[1]["num_personas"];?></td>
+              <td>   =</td>
+            </tr>
+           </table>
+        </fieldset>
+        <div>
+          <?php if(($datos2[1]["id_reservacion"])==2){ ?>
+          <input type="button" value="Realizar Pago"><input type="button" value="Cancelar Reservacion" onClick="mod_res('<?php echo Conectar :: ruta();?>?accion=verreservacion&cid=<?php echo $datos2[1]["id_reservacion"]; ?>')">
+         <?php }else{ ?>
+           <input type="button" value="Salir">
+          <?php } ?>
+            
+        </div>
+     
+
+           </div>
+</form>
+</body>
+</html>

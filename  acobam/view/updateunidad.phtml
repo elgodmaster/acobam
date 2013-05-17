@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mantenimiento de Unidad</title>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="css/estilo.css">
+<link rel="stylesheet" type="text/css" href="css/blitzer/jquery-ui-1.8.16.custom.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="js/calendario/calendar-green.css" title="win2k-cold-1" />
+
+<style>
+   table.form{width: 100%}    
+    td.label{text-align: left;width: 40%}
+    td.control{text-align: left;width: 60%}   
+</style>
+<!-- JAVASCRIPT -->
+<script src="js/jquery-1.6.2.min.js"></script>
+<script src="js/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<!-- librería principal del calendario -->
+
+<script type="text/javascript">
+
+$(function()
+{
+    $('.date-pick').datepicker({
+        maxDate: "+0D",
+      changeMonth: true,
+      changeYear: true,
+      showOn: "button",
+      buttonImage: "imagenes/calendar.gif",
+      buttonImageOnly: true
+    });
+    $(".accordion").accordion({
+      autoHeight: false,
+  navigation: true  
+    });
+    $(".dialog").dialog({
+        autoOpen: false,
+        height: 500,
+        width: 800,
+        modal: true,
+        buttons:{
+            Aceptar: function(){
+            $(this).dialog("close");
+            }
+        }
+    });
+    $(".abrir")
+        .button()
+        .click(function(){
+            $(".dialog").dialog("open");
+    });
+    var opcion={target: "#turno"}
+    $("#buscar").ajaxForm(opcion);
+});
+
+
+</script>
+</head>
+<body background="imagenes/Imagen fondo aurora celeste.png">
+  <h1>AGREGAR UNIDADES<br />
+    
+<form name="form" method="POST" action="" >
+  <!-- Primer cuadrito -->
+    <div class="accordion" style="width: 53%;margin: auto;font-size: 13px;">
+    <h3>Datos </h3>
+    <div>
+        <table class="form">
+        
+        <tr>
+        <td class="label"><label>Placa:</label>
+        <td class="control"><input type="text" size="10" name="c1" maxlength="10" onBlur="vdui(this.form.dui.value,this.form.dui)" value="?php echo $datos["placa"];?"/>
+		  <tr>
+             <tr>
+        <td class="label"><label>Disponibilidad:</label>
+        <td class="control"><input type="text" size="10" name="c2" maxlength="1" onBlur="vdui(this.form.dui.value,this.form.dui)" />
+          </tr>
+           <tr>
+                <td class="label"><label>Tipo Unidad</label></td> 
+                <td class="control"><select name="c3">
+                
+                                    <option value="MB">Microbus</option>
+                                    <option value="PI">Pickup</option>
+                                    <option value="TA">Taxi</option>
+                                    </select>
+          </tr>
+           <tr>
+        <td class="label"><label>Matricula:</label>
+        <td class="control"><input type="text" size="10" name="c4" maxlength="10" onBlur="vdui(this.form.dui.value,this.form.dui)" title="P999-999" placeholder="P999-999" />
+		  </tr>
+           <tr>
+        <td class="label"><label>Tarjeta de Circulaci&oacute;n:</label>
+        <td class="control"><input type="text" size="10" name="c5" maxlength="10" onBlur="vdui(this.form.dui.value,this.form.dui)" title="P999999-9999" placeholder="P999999-9999" />
+		 </tr>
+        </table>
+   	 
+   		<div>
+		    <input type="submit"  value="Guardar" name="boton"  />
+			 <div style="float: right"><a onClick="location.href='formularios/plantillaA.php'"><input type="button" value="Salir" /></a></div>
+		</div>
+</div>
+
+</form>
+</body>
+</html>
+<script type="text/javascript">
+Calendar.setup({
+inputField : "campo_f", // id del campo de texto
+ifFormat : "%d/%m/%Y", // formato de la fecha que se escriba en el campo de texto
+button : "muestrac" // el id del botón que lanzará el calendario
+});
+</script> 
