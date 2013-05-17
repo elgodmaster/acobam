@@ -3,7 +3,55 @@
 	<title>Bienvenidos</title>
 	</head>
 	<body>
-		<?php include("menu.phtml"); ?>
+		<?php 
+if (!isset($_SESSION['login']))
+{ 
+include("menutp.phtml");	
+	?>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="themes/css/estilo.css" />
+<link rel="shortcut icon" href="themes/imagenes/kuser.ico" type="image/x-icon">	
+<div  class="curved loginn" >
+	<table border="0" width="100%"  >
+	<tr>
+		<td colspan="2">
+		<p >Inicio de Sesión</td>
+	</tr>
+	<tr>
+		<td >Usuario</td>
+		<td><input type="text" name="cusuario" size="20" tabindex="1"></td>
+	</tr>
+	<tr>
+		<td >Contraseña</td>
+		<td class="label"><input type=password name="cpassword" size="20" tabindex="2"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><p align="center"><input type="button"  class="curvita" value="Entrar" name="B1" onclick="entrar()" tabindex="3"></td>
+	</tr>
+</table>
+</div>
+	<p align="center"><a href="registro.php"  target="_self" tabindex="4" class="otro">Registrarse</a> 
+    <div  align="center">
+      <p align="center"><a href="../index.html" target="_self" tabindex="4" class="otro">Inicio</a> 
+  </div>
+    
+             
+			
+			</td>
+	</tr>
+	
+</table>
+</form>
+</body>
+</html>
+<?php
+}else{
+include("menutp.phtml");	
+}
+ ?>
 	</body>
 	</html>
    
