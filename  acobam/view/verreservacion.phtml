@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" src="../css/estilo.css">
+<link rel="stylesheet" type="text/css" src="../css/blitzer/jquery-ui-1.8.16.custom.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="../js/calendario/calendar-green.css" title="win2k-cold-1" />
+
+<style>
+   table.form{width: 100%}    
+    td.label{text-align: left;width: 40%}
+    td.control{text-align: left;width: 60%}   
+</style>
+	<title>Ver Unidades</title>
+	<script type="text/javascript" src="<?php echo Conectar :: ruta();?>themes/js/funciones.js"></script>
+	</head>
+<body background="imagenes/Imagen fondo aurora celeste.png">
+
+<?php
+if(isset($_REQUEST["m"])){
+  switch ($_REQUEST["m"]) {
+    case 3:
+    
+      echo "<h3>Se inteto eliminar unidad, pero ocurrio un error</h3>";
+      
+      break;
+    
+    case 2:
+     echo " <h3>Se elimino unidad correctamente</h3>";
+      break;
+  }
+  
+
+}
+?>
+		<h1>Reservaciones</h1>
+        <div class="accordion" style="width: 53%;margin: auto;font-size: 13px;">
+		<table>
+           <tr>
+           	<td>Destino</td>
+           	<td>Fecha de Reservacion</td>
+           	<td>Total</td>
+            <td>Estado</td>
+           	<td>Accion</td>
+           </tr>
+           <?php
+             for($i=0;$i< sizeof ($datos);$i++)
+             {
+             	?>
+  <tr>
+           	<td><?php echo $datos[$i]["Destino"];?></td>
+            <td><?php echo $datos[$i]["fecha_hora_reserva"];?></td>
+           	<td><?php echo ($datos[$i]["costo"]+$datos[$i]["costo"]*0.13)*$datos[$i]["num_personas"];?></td>
+           	<td><?php echo $datos[$i]["nombre"];?></td>
+           	<td><a href="<?php echo Conectar :: ruta();?>?accion=verreservacion&ires=<?php echo $datos[$i]["id_reservacion"];?>'">Ver Mas</td>
+           </tr>
+
+            <?php  }
+           ?>
+		</table>
+  </div>
+	</body>
+	</html>
