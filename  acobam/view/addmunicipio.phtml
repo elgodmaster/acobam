@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mantenimiento de Unidad</title>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="css/estilo.css">
+<link rel="stylesheet" type="text/css" href="css/blitzer/jquery-ui-1.8.16.custom.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="js/calendario/calendar-green.css" title="win2k-cold-1" />
+
+<style>
+   table.form{width: 100%}    
+    td.label{text-align: left;width: 40%}
+    td.control{text-align: left;width: 60%}   
+</style>
+<!-- JAVASCRIPT -->
+<script src="js/jquery-1.6.2.min.js"></script>
+<script src="js/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<!-- librería principal del calendario -->
+
+</head>
+<body background="imagenes/Imagen fondo aurora celeste.png">
+  <h1>AGREGAR MUNICIPIO</h1><br />
+<form name="form" method="POST" action="" >
+  <!-- Primer cuadrito -->
+    <div class="accordion" style="width: 53%;margin: auto;font-size: 13px;">
+  
+    <div>
+      <?php
+      if(isset($_REQUEST["m"])){
+        if($_REQUEST["m"]==3){
+          echo "<h2>Registro guardado exitosamente</h2>";
+        }
+      }
+      ?>
+        <table class="form">
+        
+        <tr>
+        <td class="label"><label>Nombre:</label>
+        <td class="control"><input type="text" size="30" name="c1" maxlength="30" onBlur="vdui(this.form.dui.value,this.form.dui)" value="<?php if(isset($datos["nombre"])){echo $datos["nombre"];} ?>" />
+		  <tr>
+             <tr>
+        <td class="label"><label>Descripcion:</label>
+        <td class="control"><input type="text" size="50"  name="c2" maxlength="50" onBlur="vdui(this.form.dui.value,this.form.dui)" value="<?php if(isset($datos["descripcion"])){echo $datos["descripcion"];}?>"/>
+          </tr>
+           <tr>
+                <td class="label"><label>Departamento:</label></td> 
+                <td class="control"><select name="c3">
+             <?php
+             for($i=0;$i< sizeof ($datosv);$i++)
+             {
+              ?>
+              <option value="<?php echo $datosv[$i]["id_depto"];?>"><?php echo $datosv[$i]["nombre"];?></option>  
+              <?php
+              }
+              ?>  
+                                   
+                                    </select>
+          </tr>
+           
+        </table>
+   	 
+   		<div>
+		    <input type="submit"  value="Guardar" name="boton"  />
+			 <div style="float: right"><a onClick="location.href='formularios/plantillaA.php'"><input type="button" value="Salir" /></a></div>
+		</div>
+</div>
+
+</form>
+</body>
+</html>
+<script type="text/javascript">
+Calendar.setup({
+inputField : "campo_f", // id del campo de texto
+ifFormat : "%d/%m/%Y", // formato de la fecha que se escriba en el campo de texto
+button : "muestrac" // el id del botón que lanzará el calendario
+});
+</script> 
